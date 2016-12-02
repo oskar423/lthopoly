@@ -36,10 +36,8 @@ public class MoneySpace extends BoardSpace {
       if(action == GameBoard.DRAW_CARD){
                 int cardIndex = rand.nextInt()%cards.size();
                 TextUI.addToLog(cards[cardIndex].getDescription());
-                GameBoard.getCurrentPlayer.adjustMoney(cards[cardIndex].getMoney); 
+                board.getCurrentPlayer.adjustMoney(cards[cardIndex].getMoney); 
       }
-        else return;
-        
     }
 
     /**
