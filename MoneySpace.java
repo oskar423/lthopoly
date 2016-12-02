@@ -33,11 +33,14 @@ public class MoneySpace extends BoardSpace {
      * Performs a MoneySpace-related action.
      */
     public void action(GameBoard board, int action) {
-        /*switch(action){
-            case board.DRAW_CARD: int cardIndex = rand.nextInt()%cards.size();
+      if(action == GameBoard.DRAW_CARD){
+                GameBoard.DRAW_CARD: int cardIndex = rand.nextInt()%cards.size();
                 TextUI.addToLog(cards[cardIndex].getDescription());
-                board.
-        }*/
+                GameBoard.getCurrentPlayer.adjustMoney(cards[cardIndex].getMoney); 
+                break;
+      }
+        else return;
+        
     }
 
     /**
