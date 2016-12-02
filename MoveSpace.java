@@ -32,7 +32,13 @@ public class MoveSpace extends BoardSpace {
      */
     @Override
     public void action(GameBoard board, int action) {
-        
+        if (action == GameBoard.DRAW_CARD){
+                int cardIndex = rand.nextInt()%cards.size();
+                TextUI.addToLog(cards[cardIndex].getDescription());
+                GameBoard.getCurrentPlayer.moveCurrentPlayer(cards[cardIndex].getPositionAdjustment); 
+         }
+        else return;
+        }
     }
 
     /**
