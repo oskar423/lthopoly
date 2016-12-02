@@ -34,7 +34,7 @@ public class MoneySpace extends BoardSpace {
      */
     public void action(GameBoard board, int action) {
       if(action == GameBoard.DRAW_CARD){
-                GameBoard.DRAW_CARD: int cardIndex = rand.nextInt()%cards.size();
+                int cardIndex = rand.nextInt()%cards.size();
                 TextUI.addToLog(cards[cardIndex].getDescription());
                 GameBoard.getCurrentPlayer.adjustMoney(cards[cardIndex].getMoney); 
                 break;
