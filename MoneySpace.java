@@ -25,19 +25,19 @@ public class MoneySpace extends BoardSpace {
      * Returns an array of possible game actions permitted by this space
      */
     @Override
-    public int[] getPossibleActions(GameBoard board) {
-        return new int[]{board.DRAW_CARD, board.END_TURN, board.DEFAULT_VIEW, board.SHOW_BOARD, board.EXIT_GAME};
+    public int[] getPossibleActions() {
+        return new int[]{GameBoard.DRAW_CARD, GameBoard.END_TURN, GameBoard.DEFAULT_VIEW, GameBoard.SHOW_BOARD, GameBoard.EXIT_GAME};
     }
 
     /**
      * Performs a MoneySpace-related action.
      */
     public void action(GameBoard board, int action) {
-        switch(action){
+        /*switch(action){
             case board.DRAW_CARD: int cardIndex = rand.nextInt()%cards.size();
                 TextUI.addToLog(cards[cardIndex].getDescription());
                 board.
-        }
+        }*/
     }
 
     /**

@@ -24,11 +24,11 @@ public class HouseSpace extends BoardSpace {
      * Returns an array of possible game actions permitted by this space
      */
     @Override
-    public int[] getPossibleActions(GameBoard board) {
+    public int[] getPossibleActions() {
         int buyOrSell;
-        if(ownedBy == -1) buyOrSell = board.BUY_PROPERTY;
-        else buyOrSell = board.PAY_RENT; 
-        return new int[]{buyOrSell, board.END_TURN, board.DEFAULT_VIEW, board.SHOW_BOARD, board.EXIT_GAME};
+        if(ownedBy == -1) buyOrSell = GameBoard.BUY_PROPERTY;
+        else buyOrSell = GameBoard.PAY_RENT; 
+        return new int[]{buyOrSell, GameBoard.END_TURN, GameBoard.DEFAULT_VIEW, GameBoard.SHOW_BOARD, GameBoard.EXIT_GAME};
     }
 
     /**
@@ -36,7 +36,7 @@ public class HouseSpace extends BoardSpace {
      */
     @Override
     public void action(GameBoard board, int action) {
-        board.doAction(action);
+        
     }
 
     /**

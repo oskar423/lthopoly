@@ -23,8 +23,8 @@ public class MoveSpace extends BoardSpace {
      * Returns an array of possible game actions permitted by this space
      */
     @Override
-    public int[] getPossibleActions(GameBoard board) {
-        return new int[]{board.DRAW_CARD, board.END_TURN, board.DEFAULT_VIEW, board.SHOW_BOARD, board.EXIT_GAME};
+    public int[] getPossibleActions() {
+        return new int[]{GameBoard.DRAW_CARD, GameBoard.END_TURN, GameBoard.DEFAULT_VIEW, GameBoard.SHOW_BOARD, GameBoard.EXIT_GAME};
     }
 
     /**
@@ -32,7 +32,7 @@ public class MoveSpace extends BoardSpace {
      */
     @Override
     public void action(GameBoard board, int action) {
-        board.doAction(action);
+        
     }
 
     /**
