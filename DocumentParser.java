@@ -31,7 +31,7 @@ public class DocumentParser {
         String[2] parts;
         while(sc.hasNextLine()){
             parts = sc.nextLine().split(";");
-            cards.append(parts[0], Integer.parseInt(parts[1]));
+            cards.add(new MoneyCard(parts[0], Integer.parseInt(parts[1])));
         }
         return cards.toArray();
     }
@@ -46,7 +46,7 @@ public class DocumentParser {
         String[2] parts;
         while(sc.hasNextLine()){
             parts = sc.nextLine().split(";");
-            cards.append(parts[0], Integer.parseInt(parts[1]));
+            cards.add(new MoveCard(parts[0], Integer.parseInt(parts[1])));
         }
         return cards.toArray();
     }
