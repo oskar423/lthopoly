@@ -36,7 +36,12 @@ public class HouseSpace extends BoardSpace {
      */
     @Override
     public void action(GameBoard board, int action) {
-        
+        switch(action) {
+            case GameBoard.BUY_PROPERTY: this.owendBy ++;
+                board.getCurrentPlayer.adjustMoney(-rent);
+                break;
+           // INTE KLAR 
+        }
     }
 
     /**
