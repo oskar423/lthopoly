@@ -32,6 +32,7 @@ public class GameBoard {
     private int currentPlayerIndex = 0; // Int for keeping track of current player
     private ArrayList<Integer> moneySum; // Arraylist for registering total money after every round
     private Random rand = new Random();
+    private boolean rolled = false;
 
 
     /**
@@ -42,7 +43,7 @@ public class GameBoard {
         this.players = players;
         int money=0;
         for(Player p: players) money+=p.getMoney();
-        moneySum.append(money);
+        moneySum.add(money);
     }
 
     /**
@@ -51,7 +52,14 @@ public class GameBoard {
      * GameBoard
      */
     public int[] getPossibleActions() {
-        return new int[]{THROW_DICE, DRAW_CARD, BUY_PROPERTY, PAY_RENT, END_TURN, DEFAULT_VIEW, SHOW_BOARD, EXIT_GAME};
+        int[] arr = spaces[players[curretPlayerIndex].getPosition()].getPossibleActions();
+        if(!rolled){
+            int[] out = new int[arr.length+1];
+            out[0] = THROW_DICE;
+            for(int i=0; i<arr.length; i++) out[i+1] = arr[i];
+            return out;
+        }
+        return arr;
     }
 
     /**
@@ -93,19 +101,22 @@ public class GameBoard {
             case THROW_DICE: int diceRoll = rand.nextInt()%6+1;
                 TextUi.addToLog(Integer.toString(diceRoll));
                 moveCurrentPlayer(diceRoll);
+                rolled = true;
                 break;
-            case DRAW_CARD: spaces[players[currentPlayerIndex].getPosition()].action(this, action);
+            case DRAW_CARD:
             case BUY_PROPERTY:
-            case PAY_RENT:
+            case PAY_RENT: spaces[players[currentPlayerIndex].getPosition()].action(this, action);
                 break;
             case END_TURN: currentPlayerIndex = (currentPlayerIndex+1)%players.size();
                 if(currentPlayerIndex == 0){
                     int money = 0;
                     for(Player p: players) money+=p.getMoney();
-                    moneySum.append(money);
+                    moneySum.add(money);
                 }
+                rolled = false;
                 break;
-            //case DEFAULT_VIEW: Don't know what the fuck this is supposed to do...?
+            case DEFAULT_VIEW: TextUi.printStatus(this);
+                break;
             case SHOW_BOARD: TextUi.addToLog(this.toString());
                 break;
             case EXIT_GAME: System.exit();
