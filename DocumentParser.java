@@ -17,6 +17,14 @@ public class DocumentParser {
      * Returns a ArrayList of Boardspaces loaded from a file
      */
     public static ArrayList<BoardSpace> getBoard() {
+        MoneyCard[] moneyCards = getMoneyCards();
+    	MoveCard[] moceCards = getMoveCards();
+    	File f = new File("board.txt");
+    	Scanner sc = new Scanner(f);
+    	String[3] parts;
+    	while(sc.hasNextLine()){
+    		parts = sc.nextLine();
+    		if (parts = "Money")
         return null;
     }
 
